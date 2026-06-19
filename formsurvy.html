@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <!-- <link rel="stylesheet" href="formstyle.css" /> -->
+    <link  rel="stylesheet" type="text/css" href="styles2.css">
+    </head>
+<body>
+  <h1 id="title">Online survey</h1>
+  <p id="description">this is an online survey to collect information on fav anime of the month..thank you for your participation</p>
+
+  <form id="survey-form" method="post">
+   
+   <label id="name-label" for="name">Enter your Name:
+      <input  id="name"type="text" name="uname" placeholder="awais rafique"/ required>
+      </label>
+
+      <label id="email-label" for="email">Enter your email address:
+      <br>
+    <input type="email" id="email" name="email" placeholder="awaisraf201@gmail.com" required>
+</label>
+      <label id="number-label" for="phone">Enter a number (12 digits maximum):
+      <br>
+    <input type="number" id="number" name="phone" max="12" min="8" pattern="[0-9]{10,13}" placeholder="033xxxxxxx"required>
+    </label> <br>
+    <label for="choice" >what anime did you enjoy this month?
+      <select id="dropdown">
+        <option>select</option>
+      <option>overlord s4</option>
+      <option>Rising of sheild hero</option>
+      <option>One piece</option>
+        </select>
+      </label>
+    <br>
+    <legend>Would you recommend this anime?</legend>
+      <label for="anime"><input id="animeopt" type="radio" value="1" name="anime"  checked /> yes</label>
+        <label for="anime"><input id="animeopt" type="radio" value="2" name="anime" />Maybe</label>
+     <br>
+        <label for="suggestion">which anime do you plan to watch next?
+          <input type="checkbox" value="1">Naruto 
+           <input type="checkbox" value="2">Dragon ball Z
+            <input type="checkbox" value="3">gundam mobile
+             <input type="checkbox" value="4">pokemon
+              <input type="checkbox" value="5">beyblade 
+               <input type="checkbox" value="6">bakugon
+          </label>
+
+           <label for="comments">any suggestions or comments:
+          <textarea id="comment" name="comment" rows="3" cols="30" placeholder="what would you like..?"></textarea>
+      
+     </label>
+      <input id="submit" type="submit" value="submit"/>
+       
+         </form>
+         
+</body>
+</html>

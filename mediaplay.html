@@ -1,0 +1,55 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multimedia Player</title>
+</head>
+
+<body>
+  <h1>Media Player</h1>
+  <section>
+    <h2>Sailing Away</h2>
+    <audio controls aria-label="Audio player for the song Sailing Away">
+      <source src="https://cdn.freecodecamp.org/curriculum/js-music-player/sailing-away.mp3"
+        type="audio/mpeg" />
+        
+  </audio>
+  </section>
+
+
+  <section>
+
+    <h2>What is the map method and how does it work?</h2>
+    <video controls width="400"  aria-label="Video tutorial explaining the JavaScript map method">
+      <source src="https://cdn.freecodecamp.org/curriculum/labs/what-is-the-map-method-and-how-does-it-work.mp4" type="video/mp4" />
+
+       <track
+        src="https://cdn.freecodecamp.org/curriculum/labs/what-is-the-map-method-and-how-does-it-work.vtt"
+        kind="subtitles"
+        srclang="en"
+        label="English"
+      />
+    </video>
+  </section>
+
+
+  <section>
+    <h2>Transcript</h2>
+    <p>
+      In this video, we explore the map method in JavaScript. The map method is
+      used to create a new array by applying a function to each element of an
+      existing array. It does not mutate the original array; instead, it
+      returns a brand‑new array with the transformed elements. For example, if
+      you have an array of numbers and you want to double each number, you can
+      use the map method to return a new array of doubled values. The syntax is
+      <code>array.map(callbackFunction)</code>. The callback function receives
+      the current element, its index, and the original array as arguments. The
+      map method is widely used for transforming data in a clean, readable, and
+      functional way.
+    </p>
+  </section>
+</body>
+
+</html>

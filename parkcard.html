@@ -1,0 +1,302 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>National Parks · 3D Flip Cards</title>
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0ebe2;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #2e3b2c;
+            margin-bottom: 0.2rem;
+            border-bottom: 3px solid #a6b29a;
+            padding-bottom: 0.3rem;
+        }
+
+        .subtitle {
+            color: #5e6b55;
+            font-weight: 300;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ---------- CARD GRID ---------- */
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* ---------- INDIVIDUAL CARD (3D FLIP) ---------- */
+        .card {
+            flex: 0 1 300px;
+            min-width: 250px;
+            height: 400px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            border-radius: 18px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.13);
+        }
+
+        /* flip on hover */
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* front & back faces */
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.8rem 1.5rem;
+            background: #ffffff;
+            border: 1px solid #d6cfc2;
+        }
+
+        /* back face is flipped */
+        .card-back {
+            transform: rotateY(180deg);
+            background: #2e3b2c;
+            color: #f0ebe2;
+            border-color: #4a5a44;
+            justify-content: flex-start;
+            padding-top: 2rem;
+        }
+
+        /* ---------- FRONT SIDE IMAGE (using pseudo-element) ---------- */
+        .card-front {
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+        }
+
+        /* each park gets its own background image */
+        .card-1 .card-front {
+            background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80');
+        }
+        .card-2 .card-front {
+            background-image: url('https://images.unsplash.com/photo-1470071459604-7b6c0c6c2c2b?w=600&q=80');
+        }
+        .card-3 .card-front {
+            background-image: url('https://images.unsplash.com/photo-1504115532505-30e98b1b15d4?w=600&q=80');
+        }
+
+        /* overlay gradient for readability */
+        .card-front::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 70%);
+            border-radius: 18px;
+            z-index: 0;
+        }
+
+        .card-front * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-front h3 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .card-front .location {
+            font-size: 0.95rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-top: 0.1rem;
+        }
+
+        .card-front .badge {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        /* ---------- BACK SIDE CONTENT ---------- */
+        .card-back h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-bottom: 2px solid #7a8f72;
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-back p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 0.6rem;
+        }
+
+        .card-back .fact {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            border-left: 3px solid #b8c9ae;
+            margin-top: 0.4rem;
+        }
+
+        .card-back .fact strong {
+            color: #d4e0c8;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .card {
+                flex: 0 1 260px;
+                height: 360px;
+            }
+            .card-front h3 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .card {
+                flex: 0 1 100%;
+                height: 340px;
+            }
+            body {
+                padding: 1rem 0.8rem;
+            }
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: #7a8570;
+            border-top: 1px solid #d0c9bc;
+            padding-top: 1.2rem;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌲 National Parks</h1>
+    <p class="subtitle">hover over a card to flip &amp; discover</p>
+
+    <div class="card-grid">
+
+        <!-- ===== CARD 1 – Yosemite ===== -->
+        <div class="card card-1">
+            <div class="card-inner">
+                <!-- FRONT -->
+                <div class="card-front">
+                    <span class="badge">California</span>
+                    <h3>Yosemite</h3>
+                    <span class="location">Granite cliffs &amp; waterfalls</span>
+                </div>
+                <!-- BACK -->
+                <div class="card-back">
+                    <h4>Yosemite</h4>
+                    <p><strong>Area:</strong> 3,027 km²</p>
+                    <p><strong>Best time:</strong> May–September</p>
+                    <div class="fact">
+                        <strong>🌿 Did you know?</strong> Yosemite’s El Capitan is one of the world’s largest granite monoliths — climbers take up to 5 days to scale it.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CARD 2 – Banff (Canada) ===== -->
+        <div class="card card-2">
+            <div class="card-inner">
+                <div class="card-front">
+                    <span class="badge">Canada</span>
+                    <h3>Banff</h3>
+                    <span class="location">Turquoise lakes &amp; peaks</span>
+                </div>
+                <div class="card-back">
+                    <h4>Banff</h4>
+                    <p><strong>Area:</strong> 6,641 km²</p>
+                    <p><strong>Best time:</strong> June–September</p>
+                    <div class="fact">
+                        <strong>❄️ Did you know?</strong> Banff’s Lake Louise freezes solid in winter — it becomes a skating rink with a castle-like hotel backdrop.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CARD 3 – Torres del Paine (Chile) ===== -->
+        <div class="card card-3">
+            <div class="card-inner">
+                <div class="card-front">
+                    <span class="badge">Chile</span>
+                    <h3>Torres del Paine</h3>
+                    <span class="location">Patagonian wilderness</span>
+                </div>
+                <div class="card-back">
+                    <h4>Torres del Paine</h4>
+                    <p><strong>Area:</strong> 2,422 km²</p>
+                    <p><strong>Best time:</strong> November–March</p>
+                    <div class="fact">
+                        <strong>🏔️ Did you know?</strong> The park’s iconic granite towers were formed over 12 million years — and the weather can change from sun to snow in 20 minutes!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+   
+
+</body>
+</html>

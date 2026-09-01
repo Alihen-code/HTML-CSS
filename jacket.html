@@ -1,0 +1,266 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leather Jacket Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+        }
+
+        /* ---------- CARD WRAPPER ---------- */
+        .card-wrapper {
+            position: relative;
+            width: 340px;
+            /* The moving 3D border comes from the pseudo-element below */
+        }
+
+        /* ---------- THE MOVING 3D BORDER ---------- */
+        .card-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            /* Extends beyond the card */
+            border-radius: 20px;
+            background: conic-gradient(from 0deg,
+                    #c9a84c,
+                    #f5e6b8,
+                    #c9a84c,
+                    #8b6f3c,
+                    #c9a84c,
+                    #f5e6b8,
+                    #c9a84c);
+            background-size: 300% 300%;
+            animation: spin-border 4s linear infinite;
+            z-index: 0;
+            /* Behind the card */
+            filter: blur(1px);
+            /* Soft glow effect */
+        }
+
+        /* The actual card sits on top */
+        .card {
+            position: relative;
+            z-index: 1;
+            background: #1e1e1e;
+            border-radius: 18px;
+            padding: 28px 24px 30px;
+            color: #f0ede8;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Subtle lift on hover */
+        .card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
+        }
+
+        /* ---------- CARD CONTENT ---------- */
+        /* Badge */
+        .badge {
+            display: inline-block;
+            background: #c9a84c;
+            color: #1a1a1a;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 30px;
+            margin-bottom: 16px;
+        }
+
+        /* Image */
+        .jacket-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 18px;
+            background: #2a2a2a;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .jacket-img {
+            transform: scale(1.02);
+        }
+
+        /* Title */
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 6px;
+            color: #f5f0e8;
+        }
+
+        .title span {
+            color: #c9a84c;
+        }
+
+        /* Subtitle / description */
+        .sub {
+            font-size: 0.85rem;
+            color: #a8a39a;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        /* Price row */
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #333;
+            padding-top: 16px;
+            margin-top: 4px;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #f5f0e8;
+        }
+
+        .price small {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #a8a39a;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+        /* Button */
+        .btn-add {
+            background: #c9a84c;
+            border: none;
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 10px 22px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-add:hover {
+            background: #dbb95c;
+            transform: scale(1.04);
+        }
+
+        .btn-add:active {
+            transform: scale(0.95);
+        }
+
+        /* Arrow icon (simple) */
+        .btn-add .arrow {
+            display: inline-block;
+            transition: transform 0.25s;
+        }
+
+        .btn-add:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* ---------- ANIMATION ---------- */
+        @keyframes spin-border {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 400px) {
+            .card-wrapper {
+                width: 100%;
+            }
+            .card {
+                padding: 20px 16px 24px;
+            }
+            .title {
+                font-size: 1.3rem;
+            }
+            .price {
+                font-size: 1.2rem;
+            }
+            .btn-add {
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-wrapper">
+        <div class="card">
+
+            <!-- Badge -->
+            <span class="badge">✦ Premium</span>
+
+            <!-- Jacket Image -->
+            <img
+            class="jacket-img"
+            src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=600&fit=crop&crop=center"
+            alt="Brown leather jacket"
+            loading="lazy"
+            />
+
+            <!-- Title -->
+            <h2 class="title">
+                Aviator <span>Leather</span>
+            </h2>
+
+            <!-- Description -->
+            <p class="sub">
+                Premium goat leather · distressed finish · brass zippers
+            </p>
+
+            <!-- Price & Button -->
+            <div class="price-row">
+                <div class="price">
+                    $189
+                    <small>$249</small>
+                </div>
+                <button class="btn-add">
+                    Add to cart
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+
+        </div>
+        <!-- /card -->
+    </div>
+    <!-- /card-wrapper -->
+
+</body>
+</html>

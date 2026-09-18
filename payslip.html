@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee Pay Slip</title>
+<style>
+
+  body {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    background-color: #e9edf2;
+    margin: 0;
+    padding: 40px 0;
+  }
+
+  .payslip {
+    width: 650px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid #cfd6de;
+    border-top: 8px solid #1f3b57;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 30px 40px 40px 40px;
+  }
+
+  .company-header {
+    text-align: center;
+    border-bottom: 2px solid #1f3b57;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+  }
+
+  .company-header h1 {
+    color: #1f3b57;
+    margin: 0;
+    font-size: 26px;
+    letter-spacing: 1px;
+  }
+
+  .company-header p {
+    margin: 5px 0 0 0;
+    color: #6b7684;
+    font-size: 13px;
+  }
+
+  .slip-title {
+    text-align: center;
+    background-color: #1f3b57;
+    color: #ffffff;
+    padding: 8px 0;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .info-table td {
+    padding: 6px 4px;
+    font-size: 14px;
+    color: #333333;
+  }
+
+  .info-table td.label {
+    font-weight: bold;
+    color: #1f3b57;
+    width: 40%;
+  }
+
+  .earnings-table th, .earnings-table td {
+    border: 1px solid #d7dde3;
+    padding: 10px;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .earnings-table th {
+    background-color: #f1f5f9;
+    color: #1f3b57;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .earnings-table td.amount {
+    text-align: right;
+  }
+
+  .earnings-table tr.total-row td {
+    font-weight: bold;
+    background-color: #f1f5f9;
+    border-top: 2px solid #1f3b57;
+  }
+
+  .net-pay-table {
+    margin-top: 10px;
+  }
+
+  .net-pay-table td {
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #1f3b57;
+    color: #ffffff;
+  }
+
+  .net-pay-table td.amount {
+    text-align: right;
+  }
+
+  .footer-note {
+    text-align: center;
+    font-size: 12px;
+    color: #8a94a0;
+    margin-top: 25px;
+    border-top: 1px dashed #d7dde3;
+    padding-top: 12px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="payslip">
+
+  <div class="company-header">
+    <h1>NexaCore Technologies</h1>
+    <p>221 Innovation Drive, Tech Park, Lahore, Pakistan</p>
+  </div>
+
+  <div class="slip-title">Pay Slip &mdash; September 2026</div>
+
+  <table class="info-table">
+    <tr>
+      <td class="label">Employee Name</td>
+      <td>xxx xxxx</td>
+      <td class="label">Employee ID</td>
+      <td>NCT-0245</td>
+    </tr>
+    <tr>
+      <td class="label">Designation</td>
+      <td>Manager &ndash; Technology Department</td>
+      <td class="label">Department</td>
+      <td>Technology</td>
+    </tr>
+    <tr>
+      <td class="label">Date of Joining</td>
+      <td>14 March 2019</td>
+      <td class="label">Pay Period</td>
+      <td>01 &ndash; 30 Sept 2026</td>
+    </tr>
+    <tr>
+      <td class="label">Bank Account</td>
+      <td>XXXX-XXXX-4821</td>
+      <td class="label">Payment Date</td>
+      <td>30 September 2026</td>
+    </tr>
+  </table>
+
+  <table class="earnings-table">
+    <tr>
+      <th>Earnings</th>
+      <th>Amount (PKR)</th>
+      <th>Deductions</th>
+      <th>Amount (PKR)</th>
+    </tr>
+    <tr>
+      <td>Basic Salary</td>
+      <td class="amount">180,000</td>
+      <td>Income Tax</td>
+      <td class="amount">22,500</td>
+    </tr>
+    <tr>
+      <td>House Rent Allowance</td>
+      <td class="amount">40,000</td>
+      <td>Provident Fund</td>
+      <td class="amount">9,000</td>
+    </tr>
+    <tr>
+      <td>Technology Allowance</td>
+      <td class="amount">15,000</td>
+      <td>Health Insurance</td>
+      <td class="amount">3,500</td>
+    </tr>
+    <tr>
+      <td>Performance Bonus</td>
+      <td class="amount">10,000</td>
+      <td>Loan Repayment</td>
+      <td class="amount">5,000</td>
+    </tr>
+    <tr class="total-row">
+      <td>Total Earnings</td>
+      <td class="amount">245,000</td>
+      <td>Total Deductions</td>
+      <td class="amount">40,000</td>
+    </tr>
+  </table>
+
+  <table class="net-pay-table">
+    <tr>
+      <td>Net Pay</td>
+      <td class="amount">PKR 205,000</td>
+    </tr>
+  </table>
+
+  <div class="footer-note">
+    This is a computer-generated pay slip and does not require a signature.
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1078 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A living reference page built with semantic HTML5 tags.">
+  <meta name="author" content="Your Name">
+  <meta name="theme-color" content="#7c3aed">
+  <title>HTML Tag Encyclopedia — A Living Reference</title>
+
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --card: #ffffff;
+      --text: #1a1a1f;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --soft: #f3f4f6;
+      --accent: #7c3aed;
+      --accent2: #e11d48;
+      --code-bg: #1e1e26;
+      --code-text: #e4e4e7;
+      --radius: 14px;
+      --shadow: 0 2px 10px rgba(0, 0, 0, .06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      background:
+        radial-gradient(700px 320px at 15% 0%, rgba(124, 58, 237, .22), transparent 70%),
+        radial-gradient(700px 320px at 85% 5%, rgba(225, 29, 72, .18), transparent 70%),
+        #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    .site-header h1 {
+      font-size: clamp(26px, 5vw, 40px);
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    .site-header h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .site-header p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 6px;
+      font-size: 15px;
+    }
+
+    /* ---------- Nav ---------- */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, .88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-nav a {
+      padding: 6px 13px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: 999px;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .site-nav a:hover { background: var(--soft); color: var(--accent); }
+
+    /* ---------- Layout ---------- */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 28px;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 32px 24px 60px;
+      align-items: start;
+    }
+
+    main { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+    /* ---------- Section cards ---------- */
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel > h2 {
+      font-size: 19px;
+      letter-spacing: -.3px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel > h2 .num {
+      display: inline-grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      flex: 0 0 26px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .panel > h2 + p.hint {
+      color: var(--muted);
+      font-size: 13.5px;
+      margin-bottom: 18px;
+    }
+
+    .demo {
+      background: var(--soft);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+
+    .demo > * + * { margin-top: 10px; }
+
+    .label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    /* ---------- Typography inside demos ---------- */
+    .demo h3 { font-size: 17px; }
+    .demo h4 { font-size: 15px; color: var(--muted); }
+    .demo p { font-size: 14.5px; }
+
+    .demo a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+    .demo a:hover { color: var(--accent2); }
+
+    mark { background: #fde68a; padding: 1px 4px; border-radius: 4px; }
+    abbr[title] { text-decoration: underline dotted; cursor: help; }
+    kbd {
+      display: inline-block;
+      padding: 1px 7px;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-bottom-width: 2px;
+      border-radius: 5px;
+    }
+    samp { color: #16a34a; font-family: ui-monospace, monospace; font-size: 13px; }
+    var  { color: var(--accent2); font-style: italic; }
+    code {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 13px;
+      background: var(--soft);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 5px;
+    }
+    small { color: var(--muted); font-size: 12.5px; }
+
+    blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 4px 0 4px 16px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    blockquote footer { font-style: normal; font-size: 13px; margin-top: 6px; }
+
+    address { font-style: normal; font-size: 14px; color: var(--muted); line-height: 1.9; }
+
+    /* ---------- Pre / code blocks ---------- */
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 16px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 12.5px;
+      line-height: 1.7;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    }
+    pre code {
+      background: none;
+      border: 0;
+      padding: 0;
+      color: inherit;
+      font-size: inherit;
+    }
+
+    /* ---------- Lists ---------- */
+    .demo ul, .demo ol { padding-left: 22px; font-size: 14.5px; }
+    .demo ul li::marker { color: var(--accent); }
+    .demo ol li::marker { color: var(--accent2); font-weight: 700; }
+
+    dl { font-size: 14.5px; }
+    dt { font-weight: 700; margin-top: 10px; }
+    dd { margin-left: 0; color: var(--muted); padding-left: 14px; border-left: 2px solid var(--border); }
+
+    /* ---------- Table ---------- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    caption {
+      caption-side: top;
+      text-align: left;
+      font-size: 12.5px;
+      color: var(--muted);
+      padding-bottom: 8px;
+    }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    thead th { background: var(--soft); font-size: 12px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); }
+    tbody tr:hover { background: #faf5ff; }
+    tfoot td { background: var(--soft); font-weight: 600; font-size: 13px; }
+
+    /* ---------- Forms ---------- */
+    fieldset {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px 16px;
+      background: #fff;
+    }
+    legend { font-size: 12.5px; font-weight: 700; color: var(--accent); padding: 0 6px; }
+
+    .field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+    .field label { font-size: 13px; font-weight: 600; }
+    .field .help { font-size: 12px; color: var(--muted); }
+
+    input[type="text"], input[type="email"], input[type="password"], input[type="search"],
+    input[type="tel"], input[type="url"], input[type="number"], input[type="date"],
+    input[type="time"], input[type="file"], select, textarea {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, .14);
+    }
+
+    textarea { resize: vertical; min-height: 72px; }
+
+    .inline-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 14px; }
+    .inline-row label { display: flex; align-items: center; gap: 6px; font-weight: 500; }
+
+    input[type="range"] { width: 100%; accent-color: var(--accent); }
+    input[type="color"] { width: 44px; height: 34px; padding: 2px; border: 1px solid var(--border); border-radius: 8px; background: #fff; cursor: pointer; }
+    input[type="checkbox"], input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+    button {
+      padding: 9px 18px;
+      font-size: 14px;
+      font-family: inherit;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .2s ease, transform .15s ease;
+    }
+    button:hover { background: #6d28d9; }
+    button:active { transform: scale(.97); }
+    button.ghost { background: #fff; color: var(--text); border: 1px solid var(--border); }
+    button.ghost:hover { background: var(--soft); }
+
+    progress, meter { width: 100%; height: 16px; }
+
+    output {
+      display: inline-block;
+      padding: 6px 12px;
+      font-family: ui-monospace, monospace;
+      font-size: 14px;
+      background: #faf5ff;
+      border: 1px solid #ddd6fe;
+      border-radius: 8px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ---------- Media ---------- */
+    figure { margin: 0; }
+    figure img, figure svg { max-width: 100%; border-radius: 10px; display: block; }
+    figcaption { font-size: 12.5px; color: var(--muted); margin-top: 8px; text-align: center; }
+
+    canvas { width: 100%; max-width: 320px; border-radius: 10px; border: 1px solid var(--border); background: #fff; display: block; }
+
+    /* ---------- Details / Dialog ---------- */
+    details {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 14.5px;
+    }
+    details + details { margin-top: 10px; }
+    summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; align-items: center; gap: 8px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::before {
+      content: "▸";
+      color: var(--accent);
+      font-size: 13px;
+      transition: transform .2s ease;
+    }
+    details[open] summary::before { transform: rotate(90deg); }
+    details[open] summary { margin-bottom: 8px; color: var(--accent); }
+
+    dialog {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 380px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .2);
+    }
+    dialog::backdrop { background: rgba(15, 15, 20, .45); backdrop-filter: blur(2px); }
+    dialog h3 { margin-bottom: 8px; }
+    dialog p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+
+    /* ---------- Misc ---------- */
+    hr { border: 0; border-top: 1px solid var(--border); margin: 16px 0; }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 10px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      border-radius: 999px;
+      background: #ede9fe;
+      color: var(--accent);
+    }
+
+    /* ---------- Aside ---------- */
+    aside {
+      position: sticky;
+      top: 76px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .aside-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .aside-card h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .aside-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .aside-card a { font-size: 13.5px; color: var(--text); text-decoration: none; }
+    .aside-card a:hover { color: var(--accent); }
+
+    .stat { display: flex; justify-content: space-between; font-size: 13.5px; padding: 5px 0; border-bottom: 1px solid var(--border); }
+    .stat:last-child { border-bottom: 0; }
+    .stat b { color: var(--accent); }
+
+    /* ---------- Footer ---------- */
+    .site-footer {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+    .site-footer nav { display: flex; justify-content: center; gap: 18px; margin-top: 12px; flex-wrap: wrap; }
+    .site-footer a { color: var(--muted); text-decoration: none; }
+    .site-footer a:hover { color: var(--accent); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <h1>The <em>HTML Tag</em> Encyclopedia</h1>
+    <p>A single page where every section is built with the very tags it describes. Scroll, click, and inspect — it documents itself.</p>
+    <p><small>Last reviewed: <time datetime="2026-09-20">September 20, 2026</time></small></p>
+  </header>
+
+  <!-- ============ NAV ============ -->
+  <nav class="site-nav" aria-label="Section navigation">
+    <a href="#text">Text</a>
+    <a href="#lists">Lists</a>
+    <a href="#tables">Tables</a>
+    <a href="#media">Media</a>
+    <a href="#forms">Forms</a>
+    <a href="#interactive">Interactive</a>
+    <a href="#semantics">Semantics</a>
+    <a href="#code">Code</a>
+  </nav>
+
+  <!-- ============ LAYOUT ============ -->
+  <div class="layout">
+
+    <main>
+
+      <!-- ---------- 1. TEXT ---------- -->
+      <section class="panel" id="text">
+        <h2><span class="num">1</span> Text &amp; Inline Elements</h2>
+        <p class="hint">Headings, paragraphs, and the inline tags that carry meaning inside a sentence.</p>
+
+        <div class="demo">
+          <span class="label">Headings h1 – h6</span>
+          <h3>Heading level 3</h3>
+          <h4>Heading level 4</h4>
+          <p>Body copy sits at the default size. You can make text <strong>strongly important</strong>,
+            <em>emphasised</em>, <b>bold without meaning</b>, <i>italic without meaning</i>,
+            <u>underlined</u>, <s>struck through</s>, or <mark>highlighted like a marker</mark>.</p>
+
+          <p>Science and math use <sup>superscript</sup> and <sub>subscript</sub> —
+            for example E = mc<sup>2</sup> and H<sub>2</sub>O.</p>
+
+          <p>Abbreviations get a tooltip: <abbr title="HyperText Markup Language">HTML</abbr> and
+            <abbr title="Cascading Style Sheets">CSS</abbr>. Hover over them.</p>
+
+          <p>Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save. The program replied
+            <samp>Build succeeded in 0.42s</samp>. Let <var>x</var> equal the number of tags.</p>
+
+          <hr>
+
+          <span class="label">Quotes &amp; citations</span>
+          <p>Inline quotation: <q cite="https://www.w3.org/TR/html52/">The web is for everyone.</q></p>
+          <blockquote cite="https://www.w3.org/TR/html52/">
+            The scope of HTML is to describe the meaning and structure of content, not its presentation.
+            <footer>— <cite>W3C HTML Specification</cite></footer>
+          </blockquote>
+
+          <hr>
+
+          <span class="label">Ruby annotation &amp; bidirectional text</span>
+          <p>
+            <ruby>漢<rp>(</rp><rt>かん</rt><rp>)</rp></ruby>
+            <ruby>字<rp>(</rp><rt>じ</rt><rp>)</rp></ruby>
+            — Japanese ruby text shown above the characters.
+          </p>
+          <p><bdo dir="rtl">This sentence is rendered right-to-left.</bdo></p>
+          <p>Isolated direction: <bdi>مرحبا</bdi> mixed with English text.</p>
+
+          <hr>
+
+          <span class="label">Breaking &amp; spanning</span>
+          <p>First line here.<br>Second line after a line break.</p>
+          <p>ThisIsAVeryLongCompoundWordThatShouldBreakAtTheRight<wbr>SpotWhenTheScreenGetsNarrow.</p>
+          <p>A <span style="color:#7c3aed;font-weight:700;">span</span> is an inline container with no inherent meaning.</p>
+        </div>
+      </section>
+
+      <!-- ---------- 2. LISTS ---------- -->
+      <section class="panel" id="lists">
+        <h2><span class="num">2</span> Lists</h2>
+        <p class="hint">Unordered, ordered, and description lists — each with a different purpose.</p>
+
+        <div class="demo">
+          <span class="label">Unordered list &lt;ul&gt;</span>
+          <ul>
+            <li>Semantic markup
+              <ul>
+                <li>Nested lists work too</li>
+                <li>Indentation is automatic</li>
+              </ul>
+            </li>
+            <li>Accessible by default</li>
+            <li>Styled with a single rule</li>
+          </ul>
+
+          <hr>
+
+          <span class="label">Ordered list &lt;ol&gt;</span>
+          <ol>
+            <li>Write the markup</li>
+            <li>Add styles
+              <ol type="a">
+                <li>Colors and spacing</li>
+                <li>Responsive rules</li>
+              </ol>
+            </li>
+            <li>Ship it</li>
+          </ol>
+
+          <hr>
+
+          <span class="label">Description list &lt;dl&gt;</span>
+          <dl>
+            <dt><code>&lt;section&gt;</code></dt>
+            <dd>A thematic grouping of content, usually with a heading.</dd>
+
+            <dt><code>&lt;article&gt;</code></dt>
+            <dd>A self-contained composition that could stand alone.</dd>
+
+            <dt><code>&lt;aside&gt;</code></dt>
+            <dd>Content tangentially related to the main content.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ---------- 3. TABLES ---------- -->
+      <section class="panel" id="tables">
+        <h2><span class="num">3</span> Tables</h2>
+        <p class="hint">A full table with caption, column group, head, body, and foot.</p>
+
+        <div class="demo">
+          <table>
+            <caption>Tag support across HTML versions</caption>
+            <colgroup>
+              <col style="width: 34%;">
+              <col style="width: 22%;">
+              <col style="width: 22%;">
+              <col style="width: 22%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">Element</th>
+                <th scope="col">HTML4</th>
+                <th scope="col">HTML5</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><code>&lt;article&gt;</code></th>
+                <td>—</td>
+                <td>Yes</td>
+                <td>Current</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>&lt;center&gt;</code></th>
+                <td>Yes</td>
+                <td>No</td>
+                <td>Obsolete</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>&lt;dialog&gt;</code></th>
+                <td>—</td>
+                <td>Yes</td>
+                <td>Current</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>&lt;font&gt;</code></th>
+                <td>Yes</td>
+                <td>No</td>
+                <td>Obsolete</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">Total elements listed</td>
+                <td>4</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <!-- ---------- 4. MEDIA ---------- -->
+      <section class="panel" id="media">
+        <h2><span class="num">4</span> Media &amp; Graphics</h2>
+        <p class="hint">Images, responsive picture sources, inline SVG, canvas, and figure captions.</p>
+
+        <div class="demo">
+          <span class="label">Images &amp; figure</span>
+          <figure>
+            <img
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='480' height='200'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%237c3aed'/><stop offset='1' stop-color='%23e11d48'/></linearGradient></defs><rect width='480' height='200' rx='12' fill='url(%23g)'/><text x='240' y='112' font-family='system-ui,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'>HTML5</text></svg>"
+              alt="A gradient banner with the text HTML5"
+              width="480" height="200" loading="lazy">
+            <figcaption>An inline SVG data URI used as an <code>&lt;img&gt;</code> source — no external file needed.</figcaption>
+          </figure>
+
+          <hr>
+
+          <span class="label">Responsive &lt;picture&gt;</span>
+          <picture>
+            <source media="(min-width: 700px)"
+              srcset="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='480' height='140'><rect width='480' height='140' rx='12' fill='%230ea5e9'/><text x='240' y='82' font-family='system-ui,sans-serif' font-size='26' font-weight='700' fill='white' text-anchor='middle'>Wide layout</text></svg>">
+            <source media="(min-width: 400px)"
+              srcset="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='140'><rect width='400' height='140' rx='12' fill='%2316a34a'/><text x='200' y='82' font-family='system-ui,sans-serif' font-size='24' font-weight='700' fill='white' text-anchor='middle'>Medium</text></svg>">
+            <img
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='140'><rect width='320' height='140' rx='12' fill='%23f59e0b'/><text x='160' y='82' font-family='system-ui,sans-serif' font-size='22' font-weight='700' fill='white' text-anchor='middle'>Small</text></svg>"
+              alt="Responsive picture demo" width="400" height="140" loading="lazy">
+          </picture>
+          <p><small>Resize the window — the banner color and label change at 400px and 700px.</small></p>
+
+          <hr>
+
+          <span class="label">Inline SVG</span>
+          <svg viewBox="0 0 200 100" width="200" height="100" role="img" aria-label="A purple circle and a pink square">
+            <circle cx="60" cy="50" r="34" fill="#7c3aed"></circle>
+            <rect x="110" y="20" width="60" height="60" rx="10" fill="#e11d48"></rect>
+          </svg>
+          <p><small>SVG shapes drawn directly in the markup — crisp at any zoom level.</small></p>
+
+          <hr>
+
+          <span class="label">Canvas (drawn with JavaScript)</span>
+          <canvas id="demoCanvas" width="320" height="160" aria-label="Canvas drawing demo"></canvas>
+        </div>
+
+        <pre><code>&lt;!-- Video and audio follow the same pattern --&gt;
+&lt;video controls width="480" poster="cover.jpg"&gt;
+  &lt;source src="clip.webm" type="video/webm"&gt;
+  &lt;source src="clip.mp4"  type="video/mp4"&gt;
+  &lt;track kind="captions" src="subs.vtt" srclang="en" label="English"&gt;
+  Your browser does not support video.
+&lt;/video&gt;
+
+&lt;audio controls&gt;
+  &lt;source src="sound.ogg" type="audio/ogg"&gt;
+  &lt;source src="sound.mp3" type="audio/mpeg"&gt;
+  Your browser does not support audio.
+&lt;/audio&gt;
+
+&lt;iframe src="https://example.com" title="Embedded page" loading="lazy"&gt;&lt;/iframe&gt;
+
+&lt;object data="file.pdf" type="application/pdf" width="100%" height="400"&gt;&lt;/object&gt;
+&lt;embed src="file.svg" type="image/svg+xml"&gt;</code></pre>
+      </section>
+
+      <!-- ---------- 5. FORMS ---------- -->
+      <section class="panel" id="forms">
+        <h2><span class="num">5</span> Forms &amp; Inputs</h2>
+        <p class="hint">A working form demonstrating fieldsets, labels, most input types, and live output.</p>
+
+        <div class="demo">
+          <form id="demoForm" onsubmit="event.preventDefault();">
+
+            <fieldset>
+              <legend>Account details</legend>
+
+              <div class="field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="ada_lovelace"
+                       required minlength="3" maxlength="20" autocomplete="username">
+                <span class="help">3–20 characters.</span>
+              </div>
+
+              <div class="field">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com"
+                       required autocomplete="email">
+              </div>
+
+              <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••"
+                       minlength="8" autocomplete="new-password">
+              </div>
+
+              <div class="field">
+                <label for="website">Website</label>
+                <input type="url" id="website" name="website" placeholder="https://example.com">
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1 555 0100"
+                       pattern="[+0-9 ()-]{7,20}">
+              </div>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+              <legend>Preferences</legend>
+
+              <div class="field">
+                <label for="birthday">Birthday</label>
+                <input type="date" id="birthday" name="birthday" value="1995-06-15">
+              </div>
+
+              <div class="field">
+                <label for="alarm">Preferred contact time</label>
+                <input type="time" id="alarm" name="alarm" value="09:30">
+              </div>
+
+              <div class="field">
+                <label for="topic">Favourite topic</label>
+                <select id="topic" name="topic">
+                  <optgroup label="Markup">
+                    <option value="html" selected>HTML</option>
+                    <option value="svg">SVG</option>
+                  </optgroup>
+                  <optgroup label="Styling">
+                    <option value="css">CSS</option>
+                    <option value="scss">Sass</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="browser">Browser (with datalist suggestions)</label>
+                <input type="text" id="browser" name="browser" list="browsers" placeholder="Start typing...">
+                <datalist id="browsers">
+                  <option value="Chrome"></option>
+                  <option value="Firefox"></option>
+                  <option value="Safari"></option>
+                  <option value="Edge"></option>
+                </datalist>
+              </div>
+
+              <div class="field">
+                <span class="label">Accent colour</span>
+                <input type="color" id="accent" name="accent" value="#7c3aed">
+              </div>
+
+              <div class="field">
+                <label for="experience">Experience level: <output id="expOut" for="experience">5</output> / 10</label>
+                <input type="range" id="experience" name="experience" min="0" max="10" value="5" step="1">
+              </div>
+
+              <div class="field">
+                <label for="projects">Number of projects</label>
+                <input type="number" id="projects" name="projects" min="0" max="999" value="12">
+              </div>
+
+              <span class="label">Notifications</span>
+              <div class="inline-row">
+                <label><input type="checkbox" name="news" checked> Newsletter</label>
+                <label><input type="checkbox" name="beta"> Beta releases</label>
+                <label><input type="checkbox" name="security"> Security alerts</label>
+              </div>
+
+              <br>
+
+              <span class="label">Plan</span>
+              <div class="inline-row">
+                <label><input type="radio" name="plan" value="free" checked> Free</label>
+                <label><input type="radio" name="plan" value="pro"> Pro</label>
+                <label><input type="radio" name="plan" value="team"> Team</label>
+              </div>
+
+              <br>
+
+              <div class="field">
+                <label for="avatar">Upload an avatar</label>
+                <input type="file" id="avatar" name="avatar" accept="image/*">
+              </div>
+
+              <div class="field">
+                <label for="bio">Short bio</label>
+                <textarea id="bio" name="bio" rows="3" maxlength="240"
+                          placeholder="Tell us something about yourself..."></textarea>
+                <span class="help">Maximum 240 characters.</span>
+              </div>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+              <legend>Progress indicators</legend>
+
+              <div class="field">
+                <label for="profile">Profile completion</label>
+                <progress id="profile" value="68" max="100">68%</progress>
+              </div>
+
+              <div class="field">
+                <label for="storage">Storage used</label>
+                <meter id="storage" value="7.4" min="0" max="10" low="4" high="8" optimum="2">7.4 GB of 10 GB</meter>
+              </div>
+            </fieldset>
+
+            <br>
+
+            <div class="inline-row">
+              <button type="submit">Create account</button>
+              <button type="reset" class="ghost">Reset</button>
+              <button type="button" class="ghost" id="openDialog">Open dialog</button>
+            </div>
+
+            <p style="margin-top:14px;">
+              <small>Live output:</small>
+              <output id="liveOut" name="liveOut" for="experience projects">13</output>
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <!-- ---------- 6. INTERACTIVE ---------- -->
+      <section class="panel" id="interactive">
+        <h2><span class="num">6</span> Interactive Elements</h2>
+        <p class="hint">Disclosure widgets, modal dialogs, and templates — all native, no libraries.</p>
+
+        <div class="demo">
+          <span class="label">Details &amp; summary</span>
+          <details open>
+            <summary>What is a <code>&lt;details&gt;</code> element?</summary>
+            <p>A native disclosure widget. The <code>&lt;summary&gt;</code> is the always-visible label; everything
+              after it is revealed when the widget is expanded. No JavaScript required.</p>
+          </details>
+
+          <details>
+            <summary>Why use semantic HTML?</summary>
+            <p>Screen readers, search engines, and reader modes all rely on structure. Using the right element for
+              the job gives you accessibility and SEO for free.</p>
+          </details>
+
+          <details>
+            <summary>Is the <code>&lt;template&gt;</code> element rendered?</summary>
+            <p>No — its contents are inert until cloned by JavaScript. Below, a template is stamped into the page
+              three times.</p>
+          </details>
+
+          <hr>
+
+          <span class="label">Rendered from a &lt;template&gt;</span>
+          <div id="templateTarget" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;"></div>
+
+          <template id="cardTemplate">
+            <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px;">
+              <span class="pill">Card</span>
+              <h4 style="margin-top:8px;font-size:14px;"></h4>
+              <p style="font-size:12.5px;color:var(--muted);"></p>
+            </div>
+          </template>
+        </div>
+
+        <!-- Dialog lives outside the flow -->
+        <dialog id="demoDialog" aria-labelledby="dialogTitle">
+          <h3 id="dialogTitle">Native modal dialog</h3>
+          <p>This is a <code>&lt;dialog&gt;</code> opened with <code>showModal()</code>. It traps focus, dims the
+            page behind it, and closes with <kbd>Esc</kbd>.</p>
+          <form method="dialog" style="display:flex;gap:8px;justify-content:flex-end;">
+            <button type="submit" class="ghost">Close</button>
+            <button type="button" id="confirmDialog">Got it</button>
+          </form>
+        </dialog>
+      </section>
+
+      <!-- ---------- 7. SEMANTICS ---------- -->
+      <section class="panel" id="semantics">
+        <h2><span class="num">7</span> Semantic Structure</h2>
+        <p class="hint">The landmark elements that give a page its skeleton.</p>
+
+        <div class="demo">
+          <span class="label">A self-contained &lt;article&gt;</span>
+          <article>
+            <h3>Why structure beats styling</h3>
+            <p>Published <time datetime="2026-09-20T10:00">this morning</time> by
+              <a href="#semantics" rel="author">The Editor</a>.</p>
+            <p>A <code>&lt;div&gt;</code> can be styled to look like anything, but it will never
+              <em>mean</em> anything. Semantic elements carry intent that assistive technology can read.</p>
+          </article>
+
+          <hr>
+
+          <span class="label">Contact &lt;address&gt;</span>
+          <address>
+            Written by <a href="mailto:hello@example.com">hello@example.com</a><br>
+            Example Studio, 42 Markup Lane<br>
+            Internet, Web 1
+          </address>
+        </div>
+      </section>
+
+      <!-- ---------- 8. CODE ---------- -->
+      <section class="panel" id="code">
+        <h2><span class="num">8</span> Code &amp; Preformatted Text</h2>
+        <p class="hint"><code>&lt;pre&gt;</code> preserves whitespace; <code>&lt;code&gt;</code> marks a fragment.</p>
+
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Hello&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <p style="margin-top:12px;font-size:14px;">
+          Inline code looks like <code>document.querySelector()</code> inside a sentence.
+        </p>
+
+        <noscript>
+          <p><mark>JavaScript is disabled</mark> — the canvas drawing and template cards will not appear.</p>
+        </noscript>
+      </section>
+
+    </main>
+
+    <!-- ============ ASIDE ============ -->
+    <aside aria-label="Supplementary information">
+      <div class="aside-card">
+        <h3>On this page</h3>
+        <ul>
+          <li><a href="#text">1 · Text &amp; inline</a></li>
+          <li><a href="#lists">2 · Lists</a></li>
+          <li><a href="#tables">3 · Tables</a></li>
+          <li><a href="#media">4 · Media &amp; graphics</a></li>
+          <li><a href="#forms">5 · Forms &amp; inputs</a></li>
+          <li><a href="#interactive">6 · Interactive</a></li>
+          <li><a href="#semantics">7 · Semantic structure</a></li>
+          <li><a href="#code">8 · Code &amp; pre</a></li>
+        </ul>
+      </div>
+
+      <div class="aside-card">
+        <h3>Tag count</h3>
+        <div class="stat"><span>Elements used</span><b id="tagCount">—</b></div>
+        <div class="stat"><span>Sections</span><b>8</b></div>
+        <div class="stat"><span>External files</span><b>0</b></div>
+      </div>
+
+      <div class="aside-card">
+        <h3>Quick tip</h3>
+        <p style="font-size:13.5px;color:var(--muted);">
+          Open your browser's DevTools and inspect any block — the markup mirrors the heading above it.
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <p>Built as a self-documenting reference. Copy any block and adapt it.</p>
+    <nav aria-label="Footer navigation">
+      <a href="#text">Back to top</a>
+      <a href="#forms">Forms</a>
+      <a href="#media">Media</a>
+      <a href="#code">Code</a>
+    </nav>
+    <p style="margin-top:14px;"><small>&copy; <time datetime="2026">2026</time> — Made with plain HTML, CSS &amp; a little JavaScript.</small></p>
+  </footer>
+
+  <!-- ============ SCRIPT ============ -->
+  <script>
+    /* ---------- Canvas drawing ---------- */
+    (function drawCanvas() {
+      const canvas = document.getElementById('demoCanvas');
+      if (!canvas || !canvas.getContext) return;
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width, h = canvas.height;
+
+      const grad = ctx.createLinearGradient(0, 0, w, h);
+      grad.addColorStop(0, '#ede9fe');
+      grad.addColorStop(1, '#ffe4e6');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.strokeStyle = '#7c3aed';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 8) {
+        const y = h / 2 + Math.sin(x / 22) * 38;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      ctx.fillStyle = '#e11d48';
+      for (let i = 0; i < 14; i++) {
+        const x = 20 + i * 22;
+        const y = h - 22 - ((i * 37) % 60);
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.fillStyle = '#1a1a1f';
+      ctx.font = '600 13px system-ui, sans-serif';
+      ctx.fillText('2D canvas API', 14, 24);
+    })();
+
+    /* ---------- Range + number → live output ---------- */
+    const experience = document.getElementById('experience');
+    const projects   = document.getElementById('projects');
+    const expOut     = document.getElementById('expOut');
+    const liveOut    = document.getElementById('liveOut');
+
+    function updateOutput() {
+      const a = Number(experience.value);
+      const b = Number(projects.value) || 0;
+      expOut.textContent = a;
+      liveOut.textContent = a + b;
+    }
+    experience.addEventListener('input', updateOutput);
+    projects.addEventListener('input', updateOutput);
+    updateOutput();
+
+    /* ---------- Dialog ---------- */
+    const dialog = document.getElementById('demoDialog');
+    document.getElementById('openDialog').addEventListener('click', () => dialog.showModal());
+    document.getElementById('confirmDialog').addEventListener('click', () => dialog.close());
+
+    /* ---------- Template stamping ---------- */
+    const tpl    = document.getElementById('cardTemplate');
+    const target = document.getElementById('templateTarget');
+    const data = [
+      { title: 'Reusable',  text: 'Cloned from a template.' },
+      { title: 'Efficient', text: 'Parsed once, used many times.' },
+      { title: 'Inert',     text: 'Hidden until you clone it.' }
+    ];
+    data.forEach(item => {
+      const node = tpl.content.cloneNode(true);
+      node.querySelector('h4').textContent = item.title;
+      node.querySelector('p').textContent  = item.text;
+      target.appendChild(node);
+    });
+
+    /* ---------- Count distinct tag names on the page ---------- */
+    const allTags = document.querySelectorAll('*');
+    const unique = new Set(Array.from(allTags, el => el.tagName.toLowerCase()));
+    document.getElementById('tagCount').textContent = unique.size;
+  </script>
+
+</body>
+</html>
